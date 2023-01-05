@@ -1,0 +1,73 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.container {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+table, td, tr, th {
+    border: 1px solid black;
+    margin: auto;
+}
+
+#Tabela {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+
+#Tabela2 {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#agu {
+    display: none;
+    animation: aparecer 2s;
+}
+
+@keyframes aparecer {
+    0% {opacity: 0;}
+    25% {opacity: 0,25} 
+    50% {opacity: 0,5}
+    75% {opacity: 0,75} 
+    100% {opacity: 1;}
+}
+
+@keyframes sumir {
+    0% {opacity: 1}
+    25% {opacity: 0,75} 
+    50% {opacity: 0,5}
+    75% {opacity: 0,25} 
+    100% {opacity: 0}
+}
+
+#p1 {
+    height: 45vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#p2 {
+    height: 45vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
