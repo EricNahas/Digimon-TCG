@@ -14,57 +14,57 @@
     <div id="Tabela">
         <table>
             <tr>
-                <th>Número</th>
+                <th>Nível</th>
                 <th>Digimon</th>
                 <th>Quantidade</th>
             </tr>
             <tr>
-                <td>0</td>
+                <td>1</td>
                 <td>Tokomon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="0"></td>
             </tr>
             <tr>
-                <td>1</td>
+                <td>2</td>
                 <td>Patamon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="1"></td>
             </tr>
             <tr>
-                <td>2</td>
+                <td>3</td>
                 <td>Angemon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="2"></td>
             </tr>
             <tr>
-                <td>3</td>
+                <td>4</td>
                 <td>HolyAngemon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="3"></td>
             </tr>
             <tr>
-                <td>4</td>
+                <td>5</td>
                 <td>Seraphimon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="4"></td>
             </tr>
             <tr>
-                <td>5</td>
+                <td>3</td>
                 <td>Tailmon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="5"></td>
             </tr>
             <tr>
-                <td>6</td>
+                <td>4</td>
                 <td>Angewomon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="6"></td>
             </tr>
             <tr>
-                <td>7</td>
+                <td>5</td>
                 <td>Ophanimon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="7"></td>
             </tr>
             <tr>
-                <td>8</td>
+                <td>3</td>
                 <td>Agumon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="8"></td>
             </tr>
             <tr>
-                <td>9</td>
+                <td>4</td>
                 <td>Greymon</td>
                 <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="9"></td>
             </tr>
@@ -83,8 +83,16 @@
     </div>
 
     <div class="container" id="Container">
+        <div id="SubContainer"></div>
         <div class="Player" id="p2"></div>
-        <div class="botao"> <button id="btn">START</button> </div>
+        <div class="botao"> 
+            <button id="btn">START</button> 
+            <p id="MemoryCounter">
+                <span style="color: red;"> <span class="Memory">10</span> - <span class="Memory">9</span> - <span class="Memory">8</span> - <span class="Memory">7</span> - <span class="Memory">6</span> - <span class="Memory">5</span> - <span class="Memory">4</span> - <span class="Memory">3</span> - <span class="Memory">2</span> - <span class="Memory">1</span> -</span>
+                <span class="Memory">0</span>  
+                <span style="color: blue;"> - <span class="Memory">1</span> - <span class="Memory">2</span> - <span class="Memory">3</span> - <span class="Memory">4</span> - <span class="Memory">5</span> - <span class="Memory">6</span> - <span class="Memory">7</span> - <span class="Memory">8</span> - <span class="Memory">9</span> - <span class="Memory">10</span> </span>
+            </p>
+        </div>
         <div class="Player" id="p1"></div>
     </div>
 

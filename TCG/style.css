@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    font-family: 'Press Start 2P', cursive;
+}
+
 body {
     padding: 0;
     margin: 0;
     height: 100vh;
     width: 100vw;
+    animation: cores 60s infinite;
 }
 
 .container {
@@ -17,6 +24,11 @@ body {
 table, td, tr, th {
     border: 1px solid black;
     margin: auto;
+    text-align: center;
+}
+
+td input {
+    width: 10vw;
 }
 
 #Tabela {
@@ -56,18 +68,56 @@ table, td, tr, th {
     100% {opacity: 0}
 }
 
+@keyframes cores {
+    0% { background: linear-gradient(90deg, #FF2100 0%, #FF9B00 50%, #97FF00 100%);}
+    10% { background: linear-gradient(90deg, #FF9B00 0%, #97FF00 50%, #00FF70  100%);}
+    20% { background: linear-gradient(90deg, #97FF00 0%, #00FF70 50%, #00FFEC  100%);}
+    30% { background: linear-gradient(90deg, #00FF70 0%, #00FFEC 50%, #0070FF  100%);}
+    40% { background: linear-gradient(90deg, #00FFEC 0%, #0070FF 50%,  #2A00FF 100%);}
+    50% { background: linear-gradient(90deg, #0070FF 0%, #2A00FF 50%, #DC00FF 100%);}
+    60% { background: linear-gradient(90deg, #2A00FF 0%, #DC00FF 50%, #FF00B9 100%);}
+    70% { background: linear-gradient(90deg, #DC00FF 0%, #FF00B9 50%, #FF005D 100%);}
+    80% { background: linear-gradient(90deg, #FF00B9 0%, #FF005D 50%, #FF0000 100%);}
+    90% { background: linear-gradient(90deg, #FF005D 0%, #FF0000 50%, #FF2100 100%);}
+    100% { background: linear-gradient(90deg, #FF0000 0%, #FF2100 50%, #FF9B00 100%);}
+}
+
 #p1 {
+    z-index: 0;
     height: 45vh;
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
 }
 
 #p2 {
+    z-index: 0;
     height: 45vh;
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+
+input[type="number"] {
+    background-color: #C42912;
+}
+
+#MemoryCounter {
+    display: none;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    border-color: whitesmoke;
+}
+
+.Memory {
+    padding: 5px;
+}
+
+#SubContainer {
+    z-index: 10;
+    display: none;
+    width: 20vw;
+    height: 40vh;
+    background-color: #0070FF;
 }
