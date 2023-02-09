@@ -121,3 +121,33 @@ input[type="number"] {
     height: 40vh;
     background-color: #0070FF;
 }
+
+
+input[type=range]{
+    -webkit-appearance: none;
+    background: rgb(182, 4, 4);  
+    border: 1px solid rgb(255, 118, 118);
+    padding: 2px 5px 2px 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+    background-image: url(assets/koromon.png);
+    background-size: contain;
+    cursor: pointer;
+  }
+
+input[type=range]::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%; 
+
+    background-image: url(assets/koromon.png);
+    background-size: contain;
+    cursor: pointer;
+}
+  

@@ -54,6 +54,7 @@ function Somatoria() {
     for (let x in quantidades) {
         if (typeof quantidades[x].value == "string") {
             total += parseInt(quantidades[x].value)
+            document.getElementsByClassName("NumerosD")[x].value = parseInt(quantidades[x].value)
         }
     }
 
@@ -183,6 +184,7 @@ function MostraCards(){
                     document.getElementsByClassName("Memory")[PrevMemory - deck[x].PCost].style.border = "2px dashed red"
                     PrevMemory = PrevMemory - deck[x].PCost;
                     document.getElementById("p1").style.display = "none"
+                    document.getElementById("p2").style.display = "flex" 
                 }
 
                 else {
@@ -194,7 +196,7 @@ function MostraCards(){
                 
             }
             else {
-                alert("Não é a vez desse jogador!")
+                alert("Não é a vez desse jogador! \n Ou o custo da carta é muito alto!")
             }
         })
         document.getElementById("p1").appendChild(D[x])
@@ -218,6 +220,7 @@ function MostraCards(){
                     PrevMemory = PrevMemory + deck[y].PCost;
                     D2[y].src = `assets/${deck[y].CardName}.jfif`
                     document.getElementById("p2").style.display = "none"
+                    document.getElementById("p1").style.display = "flex"
                 }
                 else {
                     document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
@@ -228,7 +231,7 @@ function MostraCards(){
                 }
             }
             else {
-                alert("Não é a vez desse jogador!")
+                alert("Não é a vez desse jogador! \n Ou o custo da carta é muito alto!")
             }
         })
 

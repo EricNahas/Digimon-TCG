@@ -16,64 +16,82 @@
             <tr>
                 <th>Nível</th>
                 <th>Digimon</th>
-                <th>Quantidade</th>
+                <th colspan="2">Quantidade</th>
             </tr>
             <tr>
                 <td>1</td>
                 <td>Tokomon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="0"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="0"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>2</td>
                 <td>Patamon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="1"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="1"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Angemon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="2"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="2"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>HolyAngemon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="3"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="3"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>Seraphimon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="4"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="4"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Tailmon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="5"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="5"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>Angewomon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="6"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="6"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>5</td>
                 <td>Ophanimon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="7"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="7"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>3</td>
                 <td>Agumon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="8"></td>
+                <td><input type="range" class="Quantidade" max="3" min="0" value="0" name="8"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>4</td>
                 <td>Greymon</td>
-                <td><input type="number" class="Quantidade" max="3" min="0" value="0" name="9"></td>
+                <td><input type="range" list="tickmarks" class="Quantidade" max="3" min="0" value="0" name="9"></td>
+                <td><input type="number" disabled class="NumerosD"></td>
             </tr>
             <tr>
                 <td>TOTAL</td>
                 <td>DIGIMONS</td>
-                <td id="soma"></td>
+                <td id="soma" colspan="2">0</td>
             </tr>
         </table>
+
+        <datalist id="tickmarks">
+            <option value="0" label="0">
+            <option value="1" label="1">
+            <option value="2" label="2">
+            <option value="3" label="3">
+        </datalist>
+
         <button id="Button">LET'S BEGIN</button>
     </div>
 
