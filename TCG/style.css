@@ -4,17 +4,28 @@
     font-family: 'Press Start 2P', cursive;
 }
 
-body {
+.logo {
+    width: 30vw;
+    height: 20vh;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+.gradient {
     padding: 0;
     margin: 0;
     height: 100vh;
-    width: 100vw;
-    animation: cores 60s infinite;
+    background: linear-gradient(45deg, #FF2100, #0070FF, #97FF00);
+    animation: cores 15s ease infinite;
 }
 
 .container {
     display: none;
-    width: 100vw;
+    width: 95vw;
     height: 100vh;
     align-items: center;
     justify-content: center;
@@ -23,18 +34,22 @@ body {
 
 table, td, tr, th {
     border: 1px solid black;
+    padding: 3px;
     margin: auto;
     text-align: center;
+    align-items: center;
+    justify-content: center;
 }
 
 td input {
     width: 10vw;
+    color: black;
 }
 
 #Tabela {
     display: flex;
-    width: 100vw;
-    height: 100vh;
+    width: 90vw;
+    height: 72vh;
     align-items: center;
 }
 
@@ -69,17 +84,9 @@ td input {
 }
 
 @keyframes cores {
-    0% { background: linear-gradient(90deg, #FF2100 0%, #FF9B00 50%, #97FF00 100%);}
-    10% { background: linear-gradient(90deg, #FF9B00 0%, #97FF00 50%, #00FF70  100%);}
-    20% { background: linear-gradient(90deg, #97FF00 0%, #00FF70 50%, #00FFEC  100%);}
-    30% { background: linear-gradient(90deg, #00FF70 0%, #00FFEC 50%, #0070FF  100%);}
-    40% { background: linear-gradient(90deg, #00FFEC 0%, #0070FF 50%,  #2A00FF 100%);}
-    50% { background: linear-gradient(90deg, #0070FF 0%, #2A00FF 50%, #DC00FF 100%);}
-    60% { background: linear-gradient(90deg, #2A00FF 0%, #DC00FF 50%, #FF00B9 100%);}
-    70% { background: linear-gradient(90deg, #DC00FF 0%, #FF00B9 50%, #FF005D 100%);}
-    80% { background: linear-gradient(90deg, #FF00B9 0%, #FF005D 50%, #FF0000 100%);}
-    90% { background: linear-gradient(90deg, #FF005D 0%, #FF0000 50%, #FF2100 100%);}
-    100% { background: linear-gradient(90deg, #FF0000 0%, #FF2100 50%, #FF9B00 100%);}
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
 
 #p1 {
@@ -108,6 +115,8 @@ input[type="number"] {
     background-color: whitesmoke;
     border-radius: 20px;
     border-color: whitesmoke;
+    text-align: center;
+    padding: 10px;
 }
 
 .Memory {
@@ -151,3 +160,10 @@ input[type=range]::-moz-range-thumb {
     cursor: pointer;
 }
   
+.gameplay {
+    display: flex;
+}
+
+#SubContainer1, #SubContainer2 {
+    display: table-column;
+}
