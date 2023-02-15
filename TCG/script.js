@@ -170,7 +170,8 @@ let rodada;
 function MostraCards(){
     let D = []
     let D2 = []
-    let counter = 1;
+    let AtkP1, AtkP2;
+    let counter = 0;
     var PrevMemory = 10;
     let z = Math.round(Math.random() * 10);
 
@@ -237,10 +238,14 @@ function MostraCards(){
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
                         document.getElementsByClassName("Memory")[PrevMemory - deck[x].DCost].style.border = "2px dashed red"
                         PrevMemory = PrevMemory - deck[x].DCost;
+                        counter++;
+                        AtkP1 = deck[x].CardAttack;
 
                         for (let y = 0; y < 5; y++) {
                             D2[y].src = `assets/${deck[y]["CardName"]}.jfif`
                         }
+
+                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
                     }
                     else {
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
@@ -256,10 +261,14 @@ function MostraCards(){
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
                         document.getElementsByClassName("Memory")[PrevMemory - deck[x].PCost].style.border = "2px dashed red"
                         PrevMemory = PrevMemory - deck[x].PCost;
+                        counter++;
+                        AtkP1 = deck[x].CardAttack;
 
                         for (let y = 0; y < 5; y++) {
                             D2[y].src = `assets/${deck[y]["CardName"]}.jfif`
                         }
+
+                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
                     }
     
                     else {
@@ -294,9 +303,15 @@ function MostraCards(){
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
                         document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed red"
                         PrevMemory = PrevMemory + deck[y].PCost;
+                        counter++;
+                        AtkP2 = deck[y].CardAttack;
+
                         for (let x = 0; x < 5; x++) {
                             D[x].src = `assets/${deck[x]["CardName"]}.jfif` 
                         }
+
+                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
+                        
                     }
                     else {
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
@@ -311,9 +326,14 @@ function MostraCards(){
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
                         document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed red"
                         PrevMemory = PrevMemory + deck[y].PCost;
+                        counter++;
+                        AtkP2 = deck[y].CardAttack;
+
                         for (let x = 0; x < 5; x++) {
                             D[x].src = `assets/${deck[x]["CardName"]}.jfif` 
                         }
+
+                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
                     }
                     else {
                         document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
@@ -342,4 +362,16 @@ function MostraCards(){
 
 
 
-
+function Vencedor(cont, atkP1, atkP2) {
+    if (cont != 0 && cont % 2 == 0) {
+        if (atkP1 > atkP2) {
+            alert("Player1 wins!")
+        }
+        else if (atkP2 > atkP1) {
+            alert("Player2 wins!")
+        }
+        else {
+            alert("Draw!")
+        }
+    }
+}
