@@ -164,14 +164,15 @@ function Embaralha() {
 
 
 document.getElementById("btn").addEventListener("click", MostraCards)
-let p1Memory = -1, p2Memory = -1;
 let rodada;
 
 function MostraCards(){
-    let D = []
-    let D2 = []
+    var D = []
+    var D2 = []
     let AtkP1, AtkP2;
-    let counter = 0;
+    let LvlP1, LvlP2;
+    let DigivolveP1 = false, DigivolveP2 = false;
+    var counter = 0, counterP1 = 0, counterP2 = 0;
     var PrevMemory = 10;
     let z = Math.round(Math.random() * 10);
 
@@ -190,97 +191,91 @@ function MostraCards(){
         document.getElementsByClassName("Memory")[10].style.border = " 2px dashed red"
         rodada = false;
     }
-//--------------------------------------------------------------------------------------------------------------//
 
 //------------------------------------------------------------------------//        
 //                       COMO AS CARTAS VÃO APARECER                      //
 //------------------------------------------------------------------------//
+
+    ShowHideCards(D, D2, deck, rodada);
     
-    for (let x = 0; x < 5; x++) {
-        D[x] = document.createElement("img");
-        if (rodada == true) {
-            D[x].src = `assets/${deck[x]["CardName"]}.jfif`
-        }
-        else {
-            D[x].src = "assets/VersoCarta.webp"
-        }
-        D[x].style.height = "265px"
-        D[x].style.width = "190px"
-        D[x].style.cursor = "pointer"
-    }
 
-    for (let y = 5; y < 10; y++) {
-        D2[y] = document.createElement("img");
-        if (rodada == false) {
-            D2[y].src = `assets/${deck[y]["CardName"]}.jfif`
-        }
-        else {
-            D2[y].src = "assets/VersoCarta.webp"
-        }
-        D2[y].style.height = "265px"
-        D2[y].style.width = "190px"
-    }
-
-//------------------------------------------------------------------------//
+//-------------------------------------------------------------------------------------------------------------//
+//                                  JOGADOR 1 ESTÁ EM SUA FASE DE AÇÃO                                         //
+//-------------------------------------------------------------------------------------------------------------//
 
 
     for (let x = 0; x < 5; x++) {
         
         D[x].addEventListener("click", () => {
 
-            if (rodada == true && deck[x].PCost <= 10 || p1Memory >= 0) {
+            if (counterP1 == 0) {
+                LvlP1 = deck[x].Level;
+            }
+            
+            if (deck[x].Level == LvlP1 + 1) {
+                DigivolveP1 = true;
+            }
+            else {
+                DigivolveP1 = false;
+            }
+
+            LvlP1 = deck[x].Level;
+            
+            //CASO SEJA O PRIMEIRO DIGIMON QUE O JOGADOR ESTÁ JOGANDO NA RODADA//
+            if (rodada == true && deck[x].PCost <= PrevMemory && DigivolveP1 == false) {
                 document.getElementById("SubContainer1").style.display = "flex"
                 document.getElementById("SubContainer1").appendChild(D[x])
                 
-                if (p1Memory >= 0) {
-                    if (PrevMemory - deck[x].DCost < 10) {
-                        rodada = false;
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory - deck[x].DCost].style.border = "2px dashed red"
-                        PrevMemory = PrevMemory - deck[x].DCost;
-                        counter++;
-                        AtkP1 = deck[x].CardAttack;
+                //CASO O DIGIMON TENHA CUSTO ALÉM DA MEMÓRIA//
+                if (PrevMemory - deck[x].PCost < 10) {
+                    rodada = false;
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory - deck[x].PCost].style.border = "2px dashed red"
+                    PrevMemory = PrevMemory - deck[x].PCost;
+                    counter++;
+                    AtkP1 = deck[x].CardAttack;
+                    Vencedor(counter, AtkP1, AtkP2);
 
-                        for (let y = 0; y < 5; y++) {
-                            D2[y].src = `assets/${deck[y]["CardName"]}.jfif`
-                        }
 
-                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
-                    }
-                    else {
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory - deck[x].DCost].style.border = "2px dashed blue"
-                        PrevMemory = PrevMemory - deck[x].DCost;
-                        rodada = true;
-                        p1Memory = deck[x].DCost;
-                    }
+                    ShowCards(D, D2, deck);
+
+                    
+                }
+                
+                //CASO AINDA HAJA MEMÓRIA A SER GASTA//
+                else {
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory - deck[x].PCost].style.border = "2px dashed blue"
+                    PrevMemory = PrevMemory - deck[x].PCost;
+                    counterP1++;
+                    rodada = true;
+                }
+            }
+
+            //CASO NÃO SEJA O PRIMEIRO DIGIMON QUE O JOGADOR ESTÁ JOGANDO NA RODADA//
+            else if (rodada == true && deck[x].DCost <= PrevMemory && DigivolveP1 == true) {
+                document.getElementById("SubContainer1").style.display = "flex"
+                document.getElementById("SubContainer1").appendChild(D[x])
+                if (PrevMemory - deck[x].DCost < 10) {
+                    rodada = false;
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory - deck[x].DCost].style.border = "2px dashed red"
+                    PrevMemory = PrevMemory - deck[x].DCost;
+                    counter++;
+                    AtkP1 = deck[x].CardAttack;
+                    Vencedor(counter, AtkP1, AtkP2);
+
+                    ShowCards(D, D2, deck,);
+
+                    
                 }
                 else {
-                    if (PrevMemory - deck[x].PCost < 10) {
-                        rodada = false;
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory - deck[x].PCost].style.border = "2px dashed red"
-                        PrevMemory = PrevMemory - deck[x].PCost;
-                        counter++;
-                        AtkP1 = deck[x].CardAttack;
-
-                        for (let y = 0; y < 5; y++) {
-                            D2[y].src = `assets/${deck[y]["CardName"]}.jfif`
-                        }
-
-                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
-                    }
-    
-                    else {
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory - deck[x].PCost].style.border = "2px dashed blue"
-                        PrevMemory = PrevMemory - deck[x].PCost;
-                        rodada = true;
-                        p1Memory = deck[x].DCost;
-                    }
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory - deck[x].DCost].style.border = "2px dashed blue"
+                    PrevMemory = PrevMemory - deck[x].DCost;
+                    rodada = true;
+                    counterP1++;
                 }
-                
-                
             }
             else {
                 alert("Não é a vez desse jogador! \nOu o custo da carta é muito alto!")
@@ -289,58 +284,81 @@ function MostraCards(){
         document.getElementById("p1").appendChild(D[x])
     }
 
+//-------------------------------------------------------------------------------------------------------------//
+//                                  JOGADOR 2 ESTÁ EM SUA FASE DE AÇÃO                                         //
+//-------------------------------------------------------------------------------------------------------------//
+
+
     for (let y = 5; y < 10; y++) {
 
         D2[y].addEventListener("click", () => {
 
-            if (rodada == false && deck[y].PCost <= 10 || p2Memory >= 0) {
+            if (counterP2 == 0) {
+                LvlP2 = deck[y].Level;
+            }
+            
+            if (deck[y].Level == LvlP2 + 1) {
+                DigivolveP2 = true;
+            }
+            else {
+                DigivolveP2 = false;
+            }
+
+            LvlP2 = deck[y].Level;
+            
+            //CASO SEJA O PRIMEIRO DIGIMON QUE O JOGADOR ESTÁ JOGANDO NA RODADA//
+            if (rodada == false && deck[y].PCost <= 20 - PrevMemory && DigivolveP2 == false) {
                 document.getElementById("SubContainer2").style.display = "flex"
                 document.getElementById("SubContainer2").appendChild(D2[y])
                 
-                if (p2Memory >= 0) {
-                    if (PrevMemory + deck[y].DCost > 10) {
-                        rodada = true;
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed red"
-                        PrevMemory = PrevMemory + deck[y].PCost;
-                        counter++;
-                        AtkP2 = deck[y].CardAttack;
+                //CASO O DIGIMON TENHA CUSTO ALÉM DA MEMÓRIA//
+                if (PrevMemory + deck[y].PCost > 10) {
+                    rodada = true;
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed red"
+                    PrevMemory = PrevMemory + deck[y].PCost;
+                    counter++;
+                    AtkP2 = deck[y].CardAttack;
 
-                        for (let x = 0; x < 5; x++) {
-                            D[x].src = `assets/${deck[x]["CardName"]}.jfif` 
-                        }
+                    ShowCards(D, D2, deck);
 
-                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
-                        
-                    }
-                    else {
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed blue"
-                        PrevMemory = PrevMemory + deck[y].DCost;
-                        rodada = false;
-                    }
+                    Vencedor(counter, AtkP1, AtkP2);
                 }
+                //CASO AINDA HAJA MEMÓRIA A SER GASTA//
                 else {
-                    if (PrevMemory + deck[y].PCost > 10) {
-                        rodada = true;
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed red"
-                        PrevMemory = PrevMemory + deck[y].PCost;
-                        counter++;
-                        AtkP2 = deck[y].CardAttack;
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed blue"
+                    PrevMemory = PrevMemory + deck[y].PCost;
+                    counterP2++;
+                    rodada = false;
+                }
+            }
+            //CASO NÃO SEJA O PRIMEIRO DIGIMON QUE O JOGADOR ESTÁ JOGANDO NA RODADA//
+            else if (rodada == false && deck[y].DCost <= 20 - PrevMemory && DigivolveP2 == true) {
+                document.getElementById("SubContainer2").style.display = "flex"
+                document.getElementById("SubContainer2").appendChild(D2[y])
 
-                        for (let x = 0; x < 5; x++) {
-                            D[x].src = `assets/${deck[x]["CardName"]}.jfif` 
-                        }
+                //CASO O DIGIMON TENHA CUSTO ALÉM DA MEMÓRIA//
+                if (PrevMemory + deck[y].DCost > 10) {
+                    rodada = true;
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed red"
+                    PrevMemory = PrevMemory + deck[y].DCost;
+                    counter++;
+                    AtkP2 = deck[y].CardAttack;
 
-                        setInterval(Vencedor(counter, AtkP1, AtkP2), 1500);
-                    }
-                    else {
-                        document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                        document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed blue"
-                        PrevMemory = PrevMemory + deck[y].PCost;
-                        rodada = false;
-                    }
+                    ShowCards(D, D2, deck);
+
+                    Vencedor(counter, AtkP1, AtkP2);
+                    
+                }
+                //CASO AINDA HAJA MEMÓRIA A SER GASTA//
+                else {
+                    document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed blue"
+                    PrevMemory = PrevMemory + deck[y].DCost;
+                    rodada = false;
+                    counterP2++;
                 }
             }
             else {
@@ -373,5 +391,44 @@ function Vencedor(cont, atkP1, atkP2) {
         else {
             alert("Draw!")
         }
+    }
+    else {
+        alert("aa")
+    }
+}
+
+function ShowHideCards(thisD, thisD2, thisdeck, thisrodada) {
+    for (let x = 0; x < 5; x++) {
+        thisD[x] = document.createElement("img");
+        if (thisrodada == true) {
+            thisD[x].src = `assets/${thisdeck[x]["CardName"]}.jfif`
+        }
+        else {
+            thisD[x].src = "assets/VersoCarta.webp"
+        }
+        thisD[x].style.height = "265px"
+        thisD[x].style.width = "190px"
+        thisD[x].style.cursor = "pointer"
+    }
+
+    for (let y = 5; y < 10; y++) {
+        thisD2[y] = document.createElement("img");
+        if (thisrodada == false) {
+            thisD2[y].src = `assets/${thisdeck[y]["CardName"]}.jfif`
+        }
+        else {
+            thisD2[y].src = "assets/VersoCarta.webp"
+        }
+        thisD2[y].style.height = "265px"
+        thisD2[y].style.width = "190px"
+    }
+}
+
+function ShowCards(thisD, thisD2, thisdeck) {
+    for (let x = 0; x < 5; x++) { 
+        thisD[x].src = `assets/${thisdeck[x]["CardName"]}.jfif`;
+    }
+    for (let y = 5; y < 10; y++) {
+        thisD2[y].src = `assets/${thisdeck[y]["CardName"]}.jfif`; 
     }
 }
