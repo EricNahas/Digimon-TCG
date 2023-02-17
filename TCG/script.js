@@ -10,25 +10,25 @@ function CreateCards(CardName, CardNumber, CardAttack, PCost, DCost, Level) {
 
 let allCards = Array(10);
 
-const card0 = new CreateCards("Tokomon", 0, 1, 0, 0, 2)
+const card0 = new CreateCards("Tokomon", 0, 0, 0, 0, 2)
 allCards[0] = card0;
-const card1 = new CreateCards("Patamon", 1, 2, 1000, 0, 3)
+const card1 = new CreateCards("Patamon", 1, 1000, 3, 0, 3)
 allCards[1] = card1;
-const card2 = new CreateCards("Angemon", 2, 3, 5, 3000, 4)
+const card2 = new CreateCards("Angemon", 2, 3000, 5, 2, 4)
 allCards[2] = card2;
-const card3 = new CreateCards("HolyAngemon", 3, 4, 6000, 3, 5)
+const card3 = new CreateCards("HolyAngemon", 3, 6000, 7, 3, 5)
 allCards[3] = card3;
-const card4 = new CreateCards("Seraphimon", 4, 5, 10000, 3, 6)
+const card4 = new CreateCards("Seraphimon", 4, 10000, 12, 3, 6)
 allCards[4] = card4;
-const card5 = new CreateCards("Tailmon", 5, 1, 5000, 2, 4)
+const card5 = new CreateCards("Tailmon", 5, 5000, 6, 2, 4)
 allCards[5] = card5;
-const card6 = new CreateCards("Angewomon", 6, 2, 6000, 3, 5)
+const card6 = new CreateCards("Angewomon", 6, 6000, 7, 3, 5)
 allCards[6] = card6;
 const card7 = new CreateCards("Ophanimon", 7, 3, 11000, 3, 6)
 allCards[7] = card7;
-const card8 = new CreateCards("Agumon", 8, 3, 2000, 0, 3)
+const card8 = new CreateCards("Agumon", 8, 2000, 3, 0, 3)
 allCards[8] = card8;
-const card9 = new CreateCards("Greymon", 9, 5, 4000, 2, 4)
+const card9 = new CreateCards("Greymon", 9, 4000, 5, 2, 4)
 allCards[9] = card9;
 
 let deck = Array(10);
