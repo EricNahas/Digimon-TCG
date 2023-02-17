@@ -314,7 +314,7 @@ function MostraCards(){
                 if (PrevMemory + deck[y].PCost > 10) {
                     rodada = true;
                     document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed red"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed blue"
                     PrevMemory = PrevMemory + deck[y].PCost;
                     counter++;
                     AtkP2 = deck[y].CardAttack;
@@ -326,7 +326,7 @@ function MostraCards(){
                 //CASO AINDA HAJA MEMÓRIA A SER GASTA//
                 else {
                     document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed blue"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].PCost].style.border = "2px dashed red"
                     PrevMemory = PrevMemory + deck[y].PCost;
                     counterP2++;
                     rodada = false;
@@ -341,7 +341,7 @@ function MostraCards(){
                 if (PrevMemory + deck[y].DCost > 10) {
                     rodada = true;
                     document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed red"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed blue"
                     PrevMemory = PrevMemory + deck[y].DCost;
                     counter++;
                     AtkP2 = deck[y].CardAttack;
@@ -354,7 +354,7 @@ function MostraCards(){
                 //CASO AINDA HAJA MEMÓRIA A SER GASTA//
                 else {
                     document.getElementsByClassName("Memory")[PrevMemory].style.border = "none"
-                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed blue"
+                    document.getElementsByClassName("Memory")[PrevMemory + deck[y].DCost].style.border = "2px dashed red"
                     PrevMemory = PrevMemory + deck[y].DCost;
                     rodada = false;
                     counterP2++;
