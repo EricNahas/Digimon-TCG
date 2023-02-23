@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Digimon TCG</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon shortcut" href="assets/koromon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 
-<body>
+<body class="gradient" style="background-size: 300% 300%;">
+    <div id="logo">
+        <img class="logo" src="assets/Digimon.png" alt="#">
+    </div>
+    
 
-    <div id="Tabela">
+    <div id="Tabela" class="table table-hover table-dark">
         <table>
             <tr>
-                <th>Nível</th>
+                <th>Level</th>
                 <th>Digimon</th>
-                <th colspan="2">Quantidade</th>
+                <th colspan="2">Quantity</th>
             </tr>
             <tr>
                 <td>1</td>
@@ -96,25 +102,33 @@
     </div>
 
     <div id="Tabela2">
-        <button id="Button2">EMBARALHAR CARTAS</button>
+        <button id="Button2">SHUFFLE CARDS</button>
         <img id="agu" src="assets/Agumon.jfif" alt="xxx">
     </div>
 
     <div class="container" id="Container">
-        <div id="SubContainer"></div>
         <div class="Player" id="p2"></div>
-        <div class="botao"> 
-            <button id="btn">START</button> 
-            <p id="MemoryCounter">
-                <span style="color: red;"> <span class="Memory">10</span> - <span class="Memory">9</span> - <span class="Memory">8</span> - <span class="Memory">7</span> - <span class="Memory">6</span> - <span class="Memory">5</span> - <span class="Memory">4</span> - <span class="Memory">3</span> - <span class="Memory">2</span> - <span class="Memory">1</span> -</span>
-                <span class="Memory">0</span>  
-                <span style="color: blue;"> - <span class="Memory">1</span> - <span class="Memory">2</span> - <span class="Memory">3</span> - <span class="Memory">4</span> - <span class="Memory">5</span> - <span class="Memory">6</span> - <span class="Memory">7</span> - <span class="Memory">8</span> - <span class="Memory">9</span> - <span class="Memory">10</span> </span>
-            </p>
+
+        <div class="gameplay">
+            <div id="SubContainer1"></div>
+            <div class="botao"> 
+                <button id="btn">START</button> 
+                <p id="MemoryCounter">
+                    <span style="color: red;"> <span class="Memory">10</span> - <span class="Memory">9</span> - <span class="Memory">8</span> - <span class="Memory">7</span> - <span class="Memory">6</span> - <span class="Memory">5</span> - <span class="Memory">4</span> - <span class="Memory">3</span> - <span class="Memory">2</span> - <span class="Memory">1</span></span>
+                    <br>- <span class="Memory">0</span> -<br>
+                    <span style="color: blue;"><span class="Memory">1</span> - <span class="Memory">2</span> - <span class="Memory">3</span> - <span class="Memory">4</span> - <span class="Memory">5</span> - <span class="Memory">6</span> - <span class="Memory">7</span> - <span class="Memory">8</span> - <span class="Memory">9</span> - <span class="Memory">10</span> </span>
+                </p>
+            </div>
+            <div id="SubContainer2"></div>
         </div>
+        
         <div class="Player" id="p1"></div>
     </div>
 
+    <footer id="pe"><em>THIS GAME WAS PRODUCED BY ERIC NAHAS</em></footer>
+
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 
 </html>
